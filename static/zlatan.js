@@ -9,7 +9,7 @@ var getOffset = function() {
 /* 
  * Props to https://stackoverflow.com/questions/7957962/jquery-to-animate-image-from-left-to-right
  */
-var moveCursor = function() {
+var moveCursor = function(message) {
   var offset = $("#pic").offset();
   var width = $("#pic").width() / 2.5;
   var height = $("#pic").height() / 1.28;
@@ -17,9 +17,15 @@ var moveCursor = function() {
   var absTop = (height + offset.top);
 
   $("#cursor").animate({
-    top: absTop,
-    left: absLeft
-  }, 1000);
+      top: absTop,
+      left: absLeft
+    }, {
+      duration: 1000,
+      complete: function () {
+        goToGoogle(message);
+      }
+    }
+  );
 }
 
 var positionInputField = function() {
@@ -45,8 +51,7 @@ var showText = function (target, message, index, interval) {
     //console.log("text");
     setTimeout(function () { showText(target, message, index, getOffset()); }, interval);
   } else {
-    moveCursor();
-    goToGoogle(message);
+    moveCursor(message);
   }
 }
 
