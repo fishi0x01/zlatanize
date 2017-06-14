@@ -4,8 +4,10 @@ var goToGoogle = function(q) {
 
 var positionInputField = function() {
   var offset = $("#pic").offset();
-  var absLeft = (140 + offset.left);
-  var absTop = (360 + offset.top);
+  var width = $("#pic").width() / 5.5;
+  var height = $("#pic").height() / 1.5;
+  var absLeft = (width + offset.left);
+  var absTop = (height + offset.top);
   var text = document.getElementById('searchText');
   text.style.left = absLeft + "px";
   text.style.top = absTop + "px";
