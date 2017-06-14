@@ -1,9 +1,25 @@
 var goToGoogle = function(q) {
-  window.location.href = "https://google.com/search?q=zlatan " + q;
+  //window.location.href = "https://google.com/search?q=zlatan " + q;
 }
 
 var getOffset = function() {
   return Math.random() * (700 - 200) + 200;
+}
+
+/* 
+ * Props to https://stackoverflow.com/questions/7957962/jquery-to-animate-image-from-left-to-right
+ */
+var moveCursor = function() {
+  var offset = $("#pic").offset();
+  var width = $("#pic").width() / 2.5;
+  var height = $("#pic").height() / 1.28;
+  var absLeft = (width + offset.left);
+  var absTop = (height + offset.top);
+
+  $("#cursor").animate({
+    top: absTop,
+    left: absLeft
+  }, 1000);
 }
 
 var positionInputField = function() {
@@ -29,6 +45,7 @@ var showText = function (target, message, index, interval) {
     //console.log("text");
     setTimeout(function () { showText(target, message, index, getOffset()); }, interval);
   } else {
+    moveCursor();
     goToGoogle(message);
   }
 }
