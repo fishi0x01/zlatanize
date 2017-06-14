@@ -2,6 +2,10 @@ var goToGoogle = function(q) {
   window.location.href = "https://google.com/search?q=zlatan " + q;
 }
 
+var getOffset = function() {
+  return Math.random() * (700 - 200) + 200;
+}
+
 var positionInputField = function() {
   var offset = $("#pic").offset();
   var width = $("#pic").width() / 5.5;
@@ -23,7 +27,7 @@ var showText = function (target, message, index, interval) {
     //$(target).append(message[index++]);
     $(target).val($(target).val() + message[index++]);
     //console.log("text");
-    setTimeout(function () { showText(target, message, index, interval); }, interval);
+    setTimeout(function () { showText(target, message, index, getOffset()); }, interval);
   } else {
     goToGoogle(message);
   }
@@ -49,5 +53,5 @@ var getUrlParameter = function getUrlParameter(sParam) {
 
 $(function () {
   var q = getUrlParameter("q")
-  showText("#searchText", q, 0, 200);
+  showText("#searchText", q, 0, getOffset());
 });
