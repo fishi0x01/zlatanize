@@ -1,5 +1,5 @@
 var goToGoogle = function(q) {
-  //window.location.href = "https://google.com/search?q=zlatan " + q;
+  window.location.href = "https://google.com/search?q=zlatan " + q;
 }
 
 var getOffset = function() {
